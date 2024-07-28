@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "PESSOAS")
-public class Jogadores {
+@Table(name = "JOGADOR")
+public class Jogador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,14 +17,14 @@ public class Jogadores {
     @JoinColumn(name = "time_id")
     private Time time;
 
-    public Jogadores(String nome, String cpf, Date dataNascimento, Time time) {
+    public Jogador(String nome, String cpf, Date dataNascimento, Time time) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.time = time;
     }
 
-    public Jogadores() {}
+    public Jogador() {}
 
     public Long getId() {
         return id;

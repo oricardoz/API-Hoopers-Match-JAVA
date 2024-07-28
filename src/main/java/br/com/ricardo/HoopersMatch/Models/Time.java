@@ -13,11 +13,11 @@ public class Time {
     private long id;
     private String nomeTime;
     @OneToMany(mappedBy = "time")
-    private List<Jogadores> jogadores;
+    private List<Jogador> jogadores;
 
     public Time() {}
 
-    public Time(String nomeTime, List<Jogadores> jogadores) {
+    public Time(String nomeTime, List<Jogador> jogadores) {
         this.nomeTime = nomeTime;
         this.jogadores = jogadores;
     }
@@ -34,11 +34,11 @@ public class Time {
         this.nomeTime = nomeTime;
     }
 
-    public List<Jogadores> getJogadores() {
+    public List<Jogador> getJogadores() {
         return jogadores;
     }
 
-    public void setJogadores(List<Jogadores> jogadores) {
+    public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
 }

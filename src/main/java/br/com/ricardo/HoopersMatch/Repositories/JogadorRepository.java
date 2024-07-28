@@ -1,6 +1,6 @@
 package br.com.ricardo.HoopersMatch.Repositories;
 
-import br.com.ricardo.HoopersMatch.Models.Partida;
+import br.com.ricardo.HoopersMatch.Models.Jogador;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +12,5 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public interface PartidaRepository extends JpaRepository<Partida, Long> {
-
+public interface JogadorRepository extends JpaRepository<Jogador, Long> {
 }
