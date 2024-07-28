@@ -4,9 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class JogadorTimeDTO {
-    private String nomeTime;
+public class CadastroJogadorDTO {
+
+    private String nome;
+    private String cpf;
+    private Date dataNascimento;
 }
