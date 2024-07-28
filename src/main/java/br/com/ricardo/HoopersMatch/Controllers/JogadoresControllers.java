@@ -22,29 +22,9 @@ public class JogadoresControllers {
 
     private final JogadorService jogadorService;
     private Optional<Time> time;
-    private final TimeRepository timeRepository;
 
     @Autowired
     public JogadoresControllers(JogadorService jogadorService, TimeRepository timeRepository) {
         this.jogadorService = jogadorService;
-        this.timeRepository = timeRepository;
-        this.time = Optional.of(new Time());
-    }
-
-    @PostMapping("/criar")
-    public ResponseEntity<String> criarJogador(@RequestBody CadastroJogadorDTO cadastroJogadorDTO, IdTimeDTO idTimeDTO) {
-        try {
-            Optional<Time> time = timeRepository.findById(idTimeDTO.getId());
-            if (time.isPresent()) {
-                jogadorService.criarJogador(cadastroJogadorDTO, time.get());
-                return new ResponseEntity<>("Jogador criado com sucesso!", HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("Time não encontrado", HttpStatus.NOT_FOUND);
-            }
-        } catch (ResponseStatusException e) {
-            return new ResponseEntity<>(e.getReason(), e.getStatusCode());
-        } catch (Exception e) {
-            return new ResponseEntity<>("Erro inesperado ao criar o jogador: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 }

@@ -9,5 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CadastroTimeDTO {
+
+    public String email;
+    public String login;
+    public String senha;
     public String nome;
+
 }

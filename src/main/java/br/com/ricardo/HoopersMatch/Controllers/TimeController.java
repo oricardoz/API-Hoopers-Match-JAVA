@@ -22,15 +22,4 @@ public class TimeController {
         this.timeService = timeService;
     }
 
-    @PostMapping("/criar")
-    public ResponseEntity<String> criarTime(@RequestBody CadastroTimeDTO cadastroTimeDTO) {
-        try {
-            timeService.criarTime(cadastroTimeDTO);
-            return new ResponseEntity<>("Time criado com sucesso!", HttpStatus.OK);
-        } catch (ResponseStatusException e) {
-            return new ResponseEntity<>(e.getReason(), e.getStatusCode());
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>("Erro inesperado ao criar o time: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

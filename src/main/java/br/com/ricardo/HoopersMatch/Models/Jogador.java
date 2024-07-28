@@ -13,18 +13,48 @@ public class Jogador {
     private String nome;
     private String cpf;
     private Date dataNascimento;
+    private String login;
+    private String email;
+    private String senha;
     @ManyToOne
     @JoinColumn(name = "time_id")
     private Time time;
 
-    public Jogador(String nome, String cpf, Date dataNascimento, Time time) {
+    public Jogador(String nome, String cpf, Date dataNascimento, String login, String email, String senha, Time time) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+        this.login = login;
+        this.email = email;
+        this.senha = senha;
         this.time = time;
     }
 
     public Jogador() {}
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public Long getId() {
         return id;

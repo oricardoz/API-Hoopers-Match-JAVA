@@ -12,6 +12,10 @@ import java.util.Date;
 public class CadastroJogadorDTO {
 
     private String nome;
+    private String login;
+    private String senha;
+    private String email;
     private String cpf;
     private Date dataNascimento;
+
 }

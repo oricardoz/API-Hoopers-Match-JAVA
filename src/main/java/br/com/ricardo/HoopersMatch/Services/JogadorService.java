@@ -19,16 +19,18 @@ public class JogadorService {
         this.jogadorRepository = jogadorRepository;
     }
 
-    public void criarJogador(CadastroJogadorDTO jogadorDTO, Time time) {
+    public void criarJogador(CadastroJogadorDTO jogadorDTO) {
         if (!validarDadosCadastroJogador(jogadorDTO)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dados inválidos para cadastro do jogador.");
         }
 
         Jogador jogador = new Jogador();
+        jogador.setEmail(jogador.getEmail());
+        jogador.setSenha(jogadorDTO.getSenha());
+        jogador.setLogin(jogadorDTO.getLogin());
         jogador.setCpf(jogadorDTO.getCpf());
         jogador.setNome(jogadorDTO.getNome());
         jogador.setDataNascimento(jogadorDTO.getDataNascimento());
-        jogador.setTime(time);
 
         jogadorRepository.save(jogador);
     }
@@ -38,6 +40,15 @@ public class JogadorService {
             return false;
         }
         if (jogadorDTO.getCpf() == null || jogadorDTO.getCpf().trim().isEmpty()) {
+            return false;
+        }
+        if (jogadorDTO.getEmail() == null || jogadorDTO.getEmail().trim().isEmpty()) {
+            return false;
+        }
+        if (jogadorDTO.getLogin() == null || jogadorDTO.getLogin().trim().isEmpty()) {
+            return false;
+        }
+        if (jogadorDTO.getSenha() == null || jogadorDTO.getSenha().trim().isEmpty()) {
             return false;
         }
         if (jogadorDTO.getDataNascimento() == null) {
