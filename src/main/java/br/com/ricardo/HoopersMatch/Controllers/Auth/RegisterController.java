@@ -1,7 +1,10 @@
 package br.com.ricardo.HoopersMatch.Controllers.Auth;
 
+import br.com.ricardo.HoopersMatch.Models.Arbitro;
+import br.com.ricardo.HoopersMatch.Models.DTO.CadastroArbitroDTO;
 import br.com.ricardo.HoopersMatch.Models.DTO.CadastroJogadorDTO;
 import br.com.ricardo.HoopersMatch.Models.DTO.CadastroTimeDTO;
+import br.com.ricardo.HoopersMatch.Services.ArbitroService;
 import br.com.ricardo.HoopersMatch.Services.JogadorService;
 import br.com.ricardo.HoopersMatch.Services.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +22,13 @@ public class RegisterController {
 
     private final JogadorService jogadorService;
     private final TimeService timeService;
+    private final ArbitroService arbitroService;
 
     @Autowired
-    public RegisterController(JogadorService jogadorService, TimeService timeService) {
+    public RegisterController(JogadorService jogadorService, TimeService timeService, ArbitroService arbitroService) {
         this.jogadorService = jogadorService;
         this.timeService = timeService;
+        this.arbitroService = arbitroService;
     }
 
     @PostMapping("/jogador")
@@ -48,6 +53,18 @@ public class RegisterController {
             return new ResponseEntity<>(e.getReason(),e.getStatusCode());
         } catch (Exception e) {
             return new ResponseEntity<>("Erro inesperado ao criar o jogador: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/arbitro")
+    public ResponseEntity<String> registrarArbitro(@RequestBody CadastroArbitroDTO cadastroArbitroDTO) {
+        try {
+            arbitroService.criarArbitro(cadastroArbitroDTO);
+            return new ResponseEntity<>("Arbitro criado com êxito", HttpStatus.OK);
+        } catch (ResponseStatusException e){
+            return new ResponseEntity<>(e.getReason(),e.getStatusCode());
+        } catch (Exception e) {
+            return new ResponseEntity<>("Erro inesperado ao criar o arbitro: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
