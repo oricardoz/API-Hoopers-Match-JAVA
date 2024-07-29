@@ -13,4 +13,6 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public interface ArbitroRepository extends JpaRepository<Arbitro, Integer> {
+
+    public Arbitro findArbitroByNome(String nome);
 }
