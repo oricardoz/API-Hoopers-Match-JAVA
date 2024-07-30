@@ -13,4 +13,6 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public interface JogadorRepository extends JpaRepository<Jogador, Long> {
+
+    public Jogador findByEmailAndSenha(String email,String senha);
 }
